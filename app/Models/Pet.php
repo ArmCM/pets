@@ -31,13 +31,13 @@ class Pet extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function vaccines(): HasMany
-    {
-        return $this->hasMany(Vaccine::class);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function veterinaryConsultations(): HasMany
+    {
+        return $this->hasMany(VeterinaryConsultation::class);
     }
 }

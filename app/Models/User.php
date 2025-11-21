@@ -53,9 +53,9 @@ class User extends Authenticatable
     |--------------------------------------------------------------------------
     */
 
-    public function vaccines(): HasMany
+    public function pets(): HasMany
     {
-        return $this->hasMany(Vaccine::class);
+        return $this->hasMany(Pet::class);
     }
 
     public function address(): MorphOne

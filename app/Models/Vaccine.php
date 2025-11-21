@@ -30,13 +30,8 @@ class Vaccine extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function pet(): BelongsTo
+    public function veterinaryConsultation(): BelongsTo
     {
-        return $this->belongsTo(Pet::class);
-    }
-
-    public function veterinarian(): BelongsTo
-    {
-        return $this->belongsTo(Veterinarian::class);
+        return $this->belongsTo(VeterinaryConsultation::class);
     }
 }
