@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Traits\HasRoles;
 
 class Veterinarian extends Model
 {
     /** @use HasFactory<VeterinarianFactory> */
-    use HasFactory;
+    use HasFactory, HasRoles;
 
+    /**
+     * @inheritdoc
+     */
     protected $fillable = [
         'name',
         'email',
@@ -34,8 +38,8 @@ class Veterinarian extends Model
         return $this->belongsTo(VeterinaryClinic::class);
     }
 
-    public function vaccines(): HasMany
+    public function veterinaryConsultations(): HasMany
     {
-        return $this->hasMany(Vaccine::class);
+        return $this->hasMany(VeterinaryConsultation::class);
     }
 }
