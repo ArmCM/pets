@@ -16,12 +16,11 @@ class Vaccine extends Model
      * @inheritdoc
      */
     protected $fillable = [
-        'vaccine_name',
-        'vaccine_type',
-        'vaccine_batch_number',
-        'manufacturer',
+        'type',
+        'laboratory',
         'application_date',
         'next_application_date',
+        'veterinary_consultation_id',
     ];
 
     /*
