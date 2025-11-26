@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -53,10 +53,17 @@ class User extends Authenticatable
     |--------------------------------------------------------------------------
     */
 
-    public function pets(): HasMany
+    public function userPets(): BelongsToMany
     {
-        return $this->hasMany(Pet::class);
+        return $this->hasMany(UserPet::class);
     }
+
+//    public function pets(): BelongsToMany
+//    {
+//        return $this->belongsToMany(Pet::class)
+//            ->using(UserPet::class)
+//            ->withPivot(['type', 'start_date_care', 'primary']);
+//    }
 
     public function address(): MorphOne
     {

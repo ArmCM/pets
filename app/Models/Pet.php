@@ -5,7 +5,7 @@ namespace App\Models;
 use Database\Factories\PetFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pet extends Model
@@ -31,10 +31,17 @@ class Pet extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function user(): BelongsTo
+    public function userPets(): BelongsToMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(UserPet::class);
     }
+
+//    public function pets(): BelongsToMany
+//    {
+//        return $this->belongsToMany(Pet::class)
+//            ->using(UserPet::class)
+//            ->withPivot(['type', 'start_date_care', 'primary']);
+//    }
 
     public function veterinaryConsultations(): HasMany
     {
