@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('vaccines', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->string('laboratory');
+            $table->date('application_date');
+            $table->date('next_application_date');
             $table->timestamps();
         });
     }

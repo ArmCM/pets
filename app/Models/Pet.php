@@ -22,7 +22,6 @@ class Pet extends Model
         'distinctive_marks',
         'identification_number',
         'specie',
-        'user_id',
     ];
 
     /*
