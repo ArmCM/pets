@@ -10,6 +10,20 @@ use Spatie\Permission\Models\Role;
 class RoleSeeder extends Seeder
 {
     public const ROLE_PERMISSIONS = [
+        'admin' => [
+            'index.pets',
+            'show.pets',
+            'store.pets',
+            'edit.pets',
+            'update.pets',
+            'delete.pets',
+            'index.veterinarian',
+            'show.veterinarian',
+            'store.veterinarian',
+            'edit.veterinarian',
+            'update.veterinarian',
+            'delete.veterinarian',
+        ],
         'veterinarian' => [
             'index.pets',
             'show.pets',
@@ -30,7 +44,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->executeInTransaction(function () {
+        DB::transaction(function () {
             $this->createPermissions();
             $this->createRole();
             $this->assignPermissionsToRole();
@@ -64,13 +78,5 @@ class RoleSeeder extends Seeder
 
             $role->syncPermissions($permission);
         });
-    }
-
-    /**
-     * @throws \Throwable
-     */
-    private function executeInTransaction(callable $callback): void
-    {
-        DB::transaction($callback);
     }
 }

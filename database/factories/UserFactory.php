@@ -36,6 +36,33 @@ class UserFactory extends Factory
         ];
     }
 
+    public function admin(): Factory|UserFactory
+    {
+        return $this->state(fn ($attributes) => [
+            'email' => fake()->unique()->userName . '@gmail.com',
+        ])->afterCreating(function (User $user) {
+            $user->assignRole('admin');
+        });
+    }
+
+    public function veterinarian(): Factory|UserFactory
+    {
+        return $this->state(fn ($attributes) => [
+            'email' => fake()->unique()->userName . '@gmail.com',
+        ])->afterCreating(function (User $user) {
+            $user->assignRole('admin');
+        });
+    }
+
+    public function caregiver(): Factory|UserFactory
+    {
+        return $this->state(fn ($attributes) => [
+            'email' => fake()->unique()->userName . '@gmail.com',
+        ])->afterCreating(function (User $user) {
+            $user->assignRole('caregiver');
+        });
+    }
+
     /**
      * Indicate that the model's email address should be unverified.
      */
