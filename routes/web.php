@@ -4,8 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
+/*
+|--------------------------------------------------------------------------
+| Landing Page
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('LandingPage', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
